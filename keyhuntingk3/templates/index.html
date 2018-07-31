@@ -1,21 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- saved from url=(0049)https://v3.bootcss.com/examples/starter-template/ -->
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>数据验证</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Starter Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/Starter Template for Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Starter Template for Bootstrap_files/starter-template.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/index.css">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/Starter Template for Bootstrap_files/ie-emulation-modes-warning.js.下载"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-<p>{{res.state}}</p>
-<h1>
-    确认
-</h1>
 
-{#<input type="submit" value="确认">#}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">首页</a>
+        </div>
 
-{% if res.state == 100 %}
-    <p>信息正确</p>
+    </div>
+</nav>
+{#<form action="" method="post" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    <div class="container">#}
+{#        <input id="lefile" type="file" name="code" style="display:none">#}
+{#        <div class="input-append">#}
+{#            <input id="photoCover" class="input-large " type="text" style="height:30px;">#}
+{#            <a class="btn a1" onclick="$('input[id=lefile]').click();">请选择Excal表格文件(点击)</a>#}
+{#            <input type="submit" value="上传">#}
+{#        </div>#}
+{#        <script type="text/javascript">#}
+{#            $('input[id=lefile]').change(function () {#}
+{#                $('#photoCover').val($(this).val());#}
+{#            });#}
+{#        </script>#}
+{#    </div><!-- /.container -->#}
+{#    <input type="file" name="excel"><input type="submit">#}
+{#</form>#}
+<form action="index" method="post"   enctype="multipart/form-data">
+    {% csrf_token %}
+    <input name="code" type="file" style="margin-left: 600px">
+    <button type="submit" style="margin-left: 600px">上传</button>
+</form>
+
+{% if ret.code != 1000 %}
+<p>{{ ret.error }}</p>
 {% endif %}
+<p>{{ ret.code }}</p>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/Starter Template for Bootstrap_files/jquery.min.js.下载"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="/static/Starter Template for Bootstrap_files/bootstrap.min.js.下载"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/static/Starter Template for Bootstrap_files/ie10-viewport-bug-workaround.js.下载"></script>
 
 
 </body>

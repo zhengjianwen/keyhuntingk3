@@ -19,5 +19,5 @@ from app01 import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', views.func)
+    url(r'^index/', views.Index.as_view())
 ]

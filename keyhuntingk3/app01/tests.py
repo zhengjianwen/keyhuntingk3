@@ -3,14 +3,22 @@ import xlrd
 from app01 import path
 
 
-data = xlrd.open_workbook(path.s)
+data = xlrd.open_workbook(path.a)
 
-# table = data.sheets()[0]
-# nrows = table.nrows
+table = data.sheets()[0]
+nrows = table.nrows
 # for i in range(nrows):
-#     if i == 0:
-#         continue
-#     print(table.row_values(i))
+    # if i == 0:
+    #     continue
+    # for n in table.row_values(i):
+    #     try:
+    #         if n.strip() == '':
+    #             table.row_values(i).remove(n)
+    #     except Exception as e:
+    #         pass
+    # print(table.row_values(i))
+
+# print(li)
 
 #抓取所有sheet页的名称
 worksheets = data.sheet_names()
@@ -26,7 +34,11 @@ print(worksheet1)
 num_rows = worksheet1.nrows
 for curr_row in range(num_rows):
     row = worksheet1.row_values(curr_row)
-    print('row%s is %s' % (curr_row, row))
+    # print('row%s is %s' % (curr_row, row))
+    for n in row:
+        if n == '':
+            row.remove(n)
+    print(row)
 
 
 #遍历sheet1中所有列col
