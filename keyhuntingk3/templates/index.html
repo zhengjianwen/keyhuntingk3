@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{res.state}}</p>
+<h1>
+    确认
+</h1>
+
+{#<input type="submit" value="确认">#}
+
+{% if res.state == 100 %}
+    <p>信息正确</p>
+{% endif %}
+
+
+
+</body>
+</html>
