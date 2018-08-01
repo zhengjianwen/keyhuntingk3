@@ -14,3 +14,16 @@ class Userinfo(models.Model):
     def __str__(self):
         return self.name
 
+
+class User(models.Model):
+    """
+    用户详情
+    """
+    telephone = models.CharField(max_length=11, null=True, unique=True)
+    username = models.CharField(verbose_name='用户名', max_length=32)
+    password = models.CharField(verbose_name='用户密码', max_length=32)
+    email = models.CharField(verbose_name='邮箱', max_length=64)
+    avatar = models.FileField(upload_to='avatars/', default="/avatars/default.png")
+
+    def __str__(self):
+        return self.username

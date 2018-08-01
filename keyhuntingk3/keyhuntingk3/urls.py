@@ -19,5 +19,8 @@ from app01 import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', views.Index.as_view())
+    url(r'^index/', views.Index.as_view()),
+    url(r'^get_valid_img/', views.get_valid_img),
+    url(r'^login/', views.login),
+    url(r'^reg/', views.reg),
 ]
