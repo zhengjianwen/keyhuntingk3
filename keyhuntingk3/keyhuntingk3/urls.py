@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^get_valid_img/', views.get_valid_img),
     url(r'^login/', views.login),
     url(r'^reg/', views.reg),
+    url(r'^list/', views.Query.as_view()),
 ]

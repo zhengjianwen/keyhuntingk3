@@ -7,6 +7,7 @@ from .models import *
 from django import forms
 from django.forms import widgets
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
+from django.db.models import Q
 
 
 # 登陆
@@ -236,4 +237,40 @@ class Index(View):
             ret['error'] = '获取信息不一致'
 
         return render(request, 'index.html', {'ret': ret})
+
+
+class Query(View):
+    # search_fields = []
+    # list_filter = []
+    def get(self, request, *args, **kwargs):
+        li = Userinfo.objects.all()
+        return render(request, 'list.html', {'li': li})
+
+    def post(self, request, *args, **kwargs):
+        query_method = request.POST.get('method')
+        print(query_method)
+        year = Userinfo.objects.filter(date__in=query_method)
+        return render(request, 'detail.html', {'year': year})
+
+    # def get_serach_conditon(self, request):
+    #     # get方法查找name是q的，没有就默认是空
+    #     key_word = request.GET.get("q", "")
+    #     self.key_word = key_word
+    #     search_connection = Q()
+    #     if key_word:
+    #         # self.search_fields # ["title","price"]
+    #         # 把查询方法默认（and）改成或的or的关系
+    #         search_connection.connector = "or"
+    #         for search_field in self.search_fields:
+    #             # 模糊查询方法key_word在search_field + "__contains"中就添加
+    #             search_connection.children.append((search_field + "__contains", key_word))
+    #     return search_connection
+    #
+    # def get_filter_condition(self, request):
+    #     filter_condition = Q()
+    #
+    #     for filter_field, val in request.GET.items():
+    #         if filter_field in self.list_filter:
+    #             filter_condition.children.append((filter_field, val))
+    #     return filter_condition
 
